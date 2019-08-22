@@ -59,7 +59,8 @@ class DataManager(mContext: AppController? = AppController.instance) {
         val retryPolicy: RetryPolicy =
             DefaultRetryPolicy(DefaultRetryPolicy.DEFAULT_TIMEOUT_MS * 5, 0, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT)
         jsonReq.retryPolicy = retryPolicy
-
+        // Adding request to volley request queue
+        AppController.instance?.addToRequestQueue(jsonReq, "")
 
     }
 
