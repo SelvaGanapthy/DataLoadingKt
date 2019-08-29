@@ -1,10 +1,10 @@
 package com.example.dataloadingkt.activities
 
 import android.os.AsyncTask
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
-import android.support.annotation.IntegerRes
+import androidx.annotation.IntegerRes
 import android.util.Log
 import android.view.View
 import android.widget.TextView
@@ -23,7 +23,6 @@ import java.lang.StringBuilder
 
 class MainActivity : AppCompatActivity() {
 
-
     var DataList: ArrayList<AssetInfoModel> = ArrayList()
     var tvText: TextView? = null
     var handler: Handler = Handler()
@@ -33,19 +32,14 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         AppController.mainActivity = this
 
-        tvText = findViewById<View>(R.id.tvText) as TextView
-
-
         FetchAsynTask.execute()
     }
-
 
     object FetchAsynTask : AsyncTask<Void, Void, Void>() {
         var params: JSONObject = JSONObject()
         var dataList: ArrayList<AssetInfoModel> = ArrayList()
 
         override fun doInBackground(vararg p0: Void?): Void? {
-
 
             Log.i("params", params.toString())
 
@@ -66,8 +60,8 @@ class MainActivity : AppCompatActivity() {
                                     for (i in 0 until jadataList.length()) {
                                         val jodataList = jadataList.getJSONObject(i) as JSONObject
                                         var model: AssetInfoModel = AssetInfoModel()
-                                        model.setClientId(StringBuilder(jodataList.getString("CostCentreId")))
-                                        model.setClientName(StringBuilder(jodataList.getString("CostCentreName")))
+                                        model.costCenterId = StringBuilder(jodataList.getString("CostCentreId"))
+                                        model.costCenterName = StringBuilder(jodataList.getString("CostCentreName"))
                                         dataList.add(model)
                                     }
                                 }
@@ -98,7 +92,6 @@ class MainActivity : AppCompatActivity() {
             return null
         }
 
-
         override fun onPreExecute() {
 //            super.onPreExecute()
             try {
@@ -111,7 +104,6 @@ class MainActivity : AppCompatActivity() {
 
         override fun onPostExecute(result: Void?) {
 //            super.onPostExecute(result)
-
         }
 
     }

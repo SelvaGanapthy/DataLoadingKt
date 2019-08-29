@@ -1,25 +1,36 @@
 package com.example.dataloadingkt.models
 
-import java.io.Serializable
+import android.os.Parcel
+import android.os.Parcelable
 import java.lang.StringBuilder
 
-class AssetInfoModel : Serializable {
+data class AssetInfoModel(var temp: String = "null") : Parcelable {
 
-    private var costCenterId: StringBuilder? = null
-    private var costCenterName: StringBuilder? = null
+    internal var costCenterId: StringBuilder? = null
+    internal var costCenterName: StringBuilder? = null
 
-    fun getClientName(): StringBuilder = this.costCenterName!!
-
-    fun setClientName(costCenterName: StringBuilder): Unit {
-        this.costCenterName = costCenterName
+    constructor(parcel: Parcel) : this() {
+        this.costCenterId = StringBuilder(parcel.readString())
+        this.costCenterName = StringBuilder(parcel.readString())
     }
 
-
-    fun getClientId(): StringBuilder = this.costCenterId!!
-
-    fun setClientId(costCenterId: StringBuilder): Unit {
-        this.costCenterId = costCenterId
+    override fun writeToParcel(parcel: Parcel, flags: Int) {
+        parcel.writeString(costCenterId.toString())
+        parcel.writeString(costCenterName.toString())
     }
 
+    override fun describeContents(): Int {
+        return 0
+    }
+
+    companion object CREATOR : Parcelable.Creator<AssetInfoModel> {
+        override fun createFromParcel(parcel: Parcel): AssetInfoModel {
+            return AssetInfoModel(parcel)
+        }
+
+        override fun newArray(size: Int): Array<AssetInfoModel?> {
+            return arrayOfNulls(size)
+        }
+    }
 
 }

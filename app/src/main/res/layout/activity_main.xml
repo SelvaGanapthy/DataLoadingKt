@@ -8,20 +8,56 @@
         android:layout_height="match_parent"
         tools:context=".activities.MainActivity">
 
-    <TextView
-            android:id="@+id/tvText"
-            android:text="dfdfdfd2"
-            android:textColor="#000"
+    <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/actionBar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:theme="@style/AppTheme.AppBarOverlay"
+            android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="?attr/colorPrimary"
+                app:popupTheme="@style/AppTheme.PopupOverlay">
+            <!--<ImageButton-->
+            <!--android:layout_width="40dp"-->
+            <!--android:layout_height="35dp"-->
+            <!--android:background="@color/colorPrimary"-->
+            <!--android:onClick="goBack"-->
+            <!--android:src="@drawable/ic_arrow_back_white_24dp"/>-->
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="23dp"
+                    android:text="Request Entry"
+                    android:textColor="#000"
+                    android:textSize="16dp"/>
+            <!--            <ImageView-->
+            <!--                    android:id="@+id/logOut"-->
+            <!--                    android:layout_width="wrap_content"-->
+            <!--                    android:layout_height="wrap_content"-->
+            <!--                    android:layout_gravity="end"-->
+            <!--                    android:layout_marginRight="12dp"-->
+            <!--                    android:onClick="logOut"-->
+            <!--                    android:src="@drawable/ic_lock_white_24dp"/>-->
 
 
-    <android.support.v7.widget.RecyclerView
+
+
+
+
+        </androidx.appcompat.widget.Toolbar>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+
+    <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-    </android.support.v7.widget.RecyclerView>
+    </androidx.recyclerview.widget.RecyclerView>
 
 
 </LinearLayout>

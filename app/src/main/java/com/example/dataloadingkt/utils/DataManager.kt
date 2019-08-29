@@ -35,14 +35,11 @@ class DataManager(mContext: AppController? = AppController.instance) {
         }
 
 
-        val jsonReq: JsonObjectRequest =
-            JsonObjectRequest(Request.Method.POST, GETDATA_URL, params, Response.Listener { response ->
+        val jsonReq: JsonObjectRequest = JsonObjectRequest(Request.Method.POST, GETDATA_URL, params, Response.Listener { response ->
 
 
                 if (response != null) {
                     try {
-
-
 
 
                     } catch (e: Exception) {

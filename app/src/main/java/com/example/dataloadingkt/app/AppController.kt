@@ -26,7 +26,6 @@ class AppController:Application() {
     }
 
 
-
     val requestQueue: RequestQueue? = null
         get() {
             if (field == null) {
